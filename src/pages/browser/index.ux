@@ -1,0 +1,23 @@
+<template>
+   <div>
+       <web src="{{redirect}}" showloadingdialog></web>
+   </div>
+</template>
+
+<script>
+import webview from '@system.webview'
+
+export default {
+    protected: {
+      redirect: ''
+    },
+    onReady() {
+    //   webview.loadUrl({ 
+    //     url: this.redirect,
+    //     showloadingdialog: true,
+    //   })
+    },
+}
+</script>
+
+

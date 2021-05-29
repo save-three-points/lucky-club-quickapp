@@ -1,0 +1,32 @@
+<template>
+  <tabs class="tabs">
+    <tab-bar class="tab-bar">
+      <div class="item">
+        <image src="../../assets/images/red_envelope.png" class="icon"></image>
+        <text class="text">每日一领</text>
+      </div>
+      <div class="item">
+        <image src="../../assets/images/clock.png" class="icon"></image>
+        <text class="text">幸运福利</text>
+      </div>
+    </tab-bar>
+  </tabs>
+</template>
+
+<style lang="scss" scoped>
+.tabs {
+  position: fixed;
+  bottom: 0;
+  .item {
+    display: flex;
+    flex-direction: column;
+    .icon {
+      width: 22px;
+      height: 24px;
+    }
+    .text {
+      font-size: 16px;
+    }
+  }
+}
+</style>

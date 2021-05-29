@@ -1,0 +1,62 @@
+{
+  "package": "com.jweboy.luckyClub",
+  "name": "luckyClub",
+  "versionName": "0.2.0",
+  "versionCode": 2,
+  "minPlatformVersion": 1070,
+  "icon": "/assets/images/logo.png",
+  "features": [
+    {
+      "name": "system.prompt"
+    },
+    {
+      "name": "system.router"
+    },
+    {
+      "name": "system.shortcut"
+    },
+    {
+      "name": "system.fetch"
+    }
+  ],
+  "permissions": [
+    {
+      "origin": "*"
+    }
+  ],
+  "template/official": "demo-template",
+  "config": {
+    "logLevel": "debug"
+  },
+  "router": {
+    "entry": "pages/daily_receive",
+    "pages": {
+      "pages/daily_receive": {
+        "component": "index"
+      }
+    },
+    "widgets": {
+      "CardDemo": {
+        "name": "CardDemo",
+        "description": "快应用卡片展示",
+        "component": "index",
+        "path": "/CardDemo",
+        "minPlatformVersion": 1032,
+        "targetManufactorys": [
+          "vivo"
+        ],
+        "features": []
+      }
+    }
+  },
+  "display": {
+    "titleBarBackgroundColor": "#f2f2f2",
+    "titleBarTextColor": "#414141",
+    "menu": true,
+    "pages": {
+      "pages/daily_receive": {
+        "titleBarText": "幸运社"
+      }
+    }
+  }
+}

@@ -1,0 +1,145 @@
+<template>
+  <div class="daily">
+    <div class="list">
+      <div  class="item" for="item in couponList">
+        <div class="left" style="background-color: {{item.color}}">
+          <image  src="../../assets/images/{{item.logo}}_logo.png" class="logo" style="{{item.style}}"></image>
+          <text class="text">{{item.name}}</text>
+        </div>
+        <div class="right">
+          <text class="title">{{item.title}}</text>
+          <text class="subtitle">{{item.subtitle}}</text>
+          <div class="btn"></div>
+          <input type="button" value="立即去购"  class="btn" />
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script>
+import webview from '@system.webview'
+
+export default {
+    protected: {
+      redirect: '',
+      couponList: [
+        { 
+          name: '淘宝', 
+          logo: 'taobao', 
+          color: '#FC8848',
+          title: ' 每日10:00开售',
+          subtitle: '全场商品1元购'
+        },
+        { 
+          name: '天猫', 
+          logo: 'tianmao', 
+          color: '#E80000',
+          style: 'width: 100px;height: 46px',
+          title: ' 满199元减100',
+          subtitle: '天猫超市5折专场'
+        },
+        { 
+          name: '拼多多', 
+          logo: 'pdd', 
+          color: '#E02E26',
+          title: ' 每日更新货品',
+          subtitle: '全场商品1.9元包邮'
+        },
+        { 
+          name: '美团', 
+          logo: 'meituan', 
+          color: '#FFBB03',
+          title: '最高可领20元',
+          subtitle: '0.01元果切限购一份'
+        },
+        { 
+          name: '饿了么', 
+          logo: 'eleme', 
+          color: '#2087F2',
+          title: '抽果蔬商超神券',
+          subtitle: '满20减10起'
+        }
+      ]
+    },
+    onReady() {
+    //   webview.loadUrl({ 
+    //     url: this.redirect,
+    //     showloadingdialog: true,
+    //   })
+    },
+}
+</script>
+
+<style lang="scss" scoped>
+  .daily {
+    padding: 34px;
+    .list {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      .item {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 20px;
+        position: relative;
+      }
+      .left {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding-right: 70px;
+        width: 218px;
+        height: 192px;
+        background-color: #E02E26;
+        border-radius: 10px;
+        .logo {
+          margin-bottom: 5px;
+          width: 80px;
+          height: 80px;
+        }
+        .text {
+          color: #fff;
+          font-size: 36px;
+        }
+      }
+      .right {
+        position: absolute;
+        z-index: 10;
+        top: 15px;
+        right: 0;
+        padding-left: 66px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        width: 80%;
+        height: 162px;
+        background-image: url('../../assets/images/rectangle.png');
+        background-size: cover;
+        .title {
+          margin-bottom: 10px;
+          font-size: 36px;
+          font-weight: normal;
+          color: #575552;
+        }
+        .subtitle {
+          font-size: 32px;
+          font-weight: normal;
+          color: #fd0c3c;
+        }
+        .btn {
+          position: absolute;
+          right: 14px;
+          background: linear-gradient(180deg,#f75050 0%,#cf0606 100%);
+	        border-radius: 16px;
+          color: #fff;
+          padding: 10px 20px;
+        }
+      }
+    }
+  }
+</style>
+
+
+

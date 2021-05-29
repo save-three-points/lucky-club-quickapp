@@ -1,0 +1,56 @@
+<template>
+    <div class="wrapper">
+        <text>倒计时{{count}}s</text>
+        <div>
+            <input  type="button" value="开始" class="btn" @click="startTime" />
+            <input  type="button" value="结束" class="btn" @click="stopTime" />
+        </div>
+    </div>
+</template>
+
+<script>
+export default {
+    private: {
+      count: 60,
+      timer: 0,
+    },
+    startTime() {
+        if(!this.timer) {
+            this.timer = setInterval(() => {
+                this.count -= 1;
+                console.log(this.count)
+            }, 1000);
+        }
+    },
+    stopTime() {
+        if(this.timer > -1) {
+            clearInterval(this.timer);
+            this.timer = 0;
+            this.count = 60;
+        }
+    }
+}
+</script>
+
+<style lang="scss" scoped>
+@import './../../assets/styles/style.scss';
+
+.wrapper {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  .btn {
+    width: 300px;
+    height: 16 * $size-factor;
+    border-radius: 8 * $size-factor;
+    background-color: $brand;
+    color: $white;
+    font-size: 30px;
+    margin-top: 16 * $size-factor;
+    margin-right: 20px;
+  }
+}
+</style>
+
+
