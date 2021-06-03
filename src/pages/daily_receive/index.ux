@@ -1,16 +1,45 @@
 <template>
   <div class="daily">
-    <div class="list">
-      <div  class="item" for="item in couponList">
-        <div class="left" style="background-color: {{item.color}}">
-          <image  src="../../assets/images/{{item.logo}}_logo.png" class="logo" style="{{item.style}}"></image>
-          <text class="text">{{item.name}}</text>
+    <div class="header">
+      <!-- 幸运社 -->
+      <image src="../../assets/images/oval@2x.png"></image>
+    </div>
+    <div class="content">
+      <div class="card">
+        <div class="coupon">
+          <div class="pink">
+            <div class="item">
+              <text class="name">外卖红包</text>
+              <div>
+                <text class="highlight">8-30</text>
+                <text class="suffix">元</text>
+              </div>
+              <text class="desc">每天都能领</text>
+            </div>
+            <div class="circle">
+              <text>待领取</text>
+              <text>+1</text>
+            </div>
+          </div>
+          <div class="blue-item"></div>
         </div>
-        <div class="right">
-          <text class="title">{{item.title}}</text>
-          <text class="subtitle">{{item.subtitle}}</text>
-          <div class="btn"></div>
-          <input type="button" value="立即去购"  class="btn" />
+      </div>
+      <div class="list">
+        <div class="item" for="item in couponList">
+          <div class="left" style="background-color: {{item.color}}">
+            <image
+              src="../../assets/images/{{item.logo}}_logo.png"
+              class="logo"
+              style="{{item.style}}"
+            ></image>
+            <text class="text">{{ item.name }}</text>
+          </div>
+          <div class="right">
+            <text class="title">{{ item.title }}</text>
+            <text class="subtitle">{{ item.subtitle }}</text>
+            <div class="btn"></div>
+            <input type="button" value="立即去购" class="btn" />
+          </div>
         </div>
       </div>
     </div>
@@ -21,125 +50,212 @@
 import webview from '@system.webview'
 
 export default {
-    protected: {
-      redirect: '',
-      couponList: [
-        { 
-          name: '淘宝', 
-          logo: 'taobao', 
-          color: '#FC8848',
-          title: ' 每日10:00开售',
-          subtitle: '全场商品1元购'
-        },
-        { 
-          name: '天猫', 
-          logo: 'tianmao', 
-          color: '#E80000',
-          style: 'width: 100px;height: 46px',
-          title: ' 满199元减100',
-          subtitle: '天猫超市5折专场'
-        },
-        { 
-          name: '拼多多', 
-          logo: 'pdd', 
-          color: '#E02E26',
-          title: ' 每日更新货品',
-          subtitle: '全场商品1.9元包邮'
-        },
-        { 
-          name: '美团', 
-          logo: 'meituan', 
-          color: '#FFBB03',
-          title: '最高可领20元',
-          subtitle: '0.01元果切限购一份'
-        },
-        { 
-          name: '饿了么', 
-          logo: 'eleme', 
-          color: '#2087F2',
-          title: '抽果蔬商超神券',
-          subtitle: '满20减10起'
-        }
-      ]
-    },
-    onReady() {
-    //   webview.loadUrl({ 
+  protected: {
+    redirect: '',
+    couponList: [
+      {
+        name: '淘宝',
+        logo: 'taobao',
+        color: '#FC8848',
+        title: ' 每日10:00开售',
+        subtitle: '全场商品1元购'
+      },
+      {
+        name: '天猫',
+        logo: 'tianmao',
+        color: '#E80000',
+        style: 'width: 100px;height: 46px',
+        title: ' 满199元减100',
+        subtitle: '天猫超市5折专场'
+      },
+      {
+        name: '拼多多',
+        logo: 'pdd',
+        color: '#E02E26',
+        title: ' 每日更新货品',
+        subtitle: '全场商品1.9元包邮'
+      },
+      {
+        name: '美团',
+        logo: 'meituan',
+        color: '#FFBB03',
+        title: '最高可领20元',
+        subtitle: '0.01元果切限购一份'
+      },
+      {
+        name: '饿了么',
+        logo: 'eleme',
+        color: '#2087F2',
+        title: '抽果蔬商超神券',
+        subtitle: '满20减10起'
+      }
+    ]
+  },
+  onReady() {
+    //   webview.loadUrl({
     //     url: this.redirect,
     //     showloadingdialog: true,
     //   })
-    },
+  }
 }
 </script>
 
 <style lang="scss" scoped>
-  .daily {
+.daily {
+  display: flex;
+  flex-direction: column;
+  .header {
+    height: 204px;
+    width: 100%;
+    background-image: url('../../assets/images/oval@2x.png');
+    background-size: cover;
+    text-align: center;
+  }
+  .content {
+    display: flex;
+    flex-direction: column;
     padding: 34px;
-    .list {
+    margin-top: -80px;
+  }
+  .card {
+    height: 666px;
+    width: 100%;
+    position: relative;
+    background-image: url('../../assets/images/card@2x.png');
+    background-size: cover;
+    margin-bottom: 20px;
+    .coupon {
+      position: absolute;
+      top: 146px;
+      left: 50%;
+      transform: translateX(-50%);
       display: flex;
-      flex-direction: column;
+      justify-content: space-around;
       width: 100%;
-      .item {
+      .pink {
         display: flex;
         flex-direction: column;
-        margin-bottom: 20px;
         position: relative;
-      }
-      .left {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        padding-right: 70px;
-        width: 218px;
-        height: 192px;
-        background-color: #E02E26;
-        border-radius: 10px;
-        .logo {
-          margin-bottom: 5px;
-          width: 80px;
-          height: 80px;
+        .item {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          width: 200px;
+          height: 240px;
+          background-image: url('../../assets/images/light_pink_coupon@2x.png');
+          background-size: contain;
+          overflow: initial;
+          .name {
+            margin-top: 10px;
+            font-size: 28px;
+            font-weight: normal;
+            color: #00b6fe;
+          }
+          .highlight {
+            margin-top: 20px;
+            font-size: 48px;
+            font-weight: normal;
+            color: #f20508;
+          }
+          .suffix {
+            margin-top: 20px;
+            font-size: 32px;
+            font-weight: normal;
+            color: #5d5b58;
+          }
+          .desc {
+            font-size: 24px;
+            font-weight: normal;
+            color: #dd584f;
+          }
         }
-        .text {
-          color: #fff;
-          font-size: 36px;
-        }
-      }
-      .right {
-        position: absolute;
-        z-index: 10;
-        top: 15px;
-        right: 0;
-        padding-left: 66px;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        width: 80%;
-        height: 162px;
-        background-image: url('../../assets/images/rectangle.png');
-        background-size: cover;
-        .title {
-          margin-bottom: 10px;
-          font-size: 36px;
-          font-weight: normal;
-          color: #575552;
-        }
-        .subtitle {
-          font-size: 32px;
-          font-weight: normal;
-          color: #fd0c3c;
-        }
-        .btn {
+        .circle {
           position: absolute;
-          right: 14px;
-          background: linear-gradient(180deg,#f75050 0%,#cf0606 100%);
-	        border-radius: 16px;
+          bottom: -60px;
+          width: 112px;
+          height: 112px;
+          background: linear-gradient(
+            90deg,
+            #fa307a 0%,
+            #fd0734 50%,
+            #fd7e41 100%
+          );
+          z-index: 10;
           color: #fff;
-          padding: 10px 20px;
+          border-radius: 50%;
         }
+      }
+      .blue-item {
+        width: 184px;
+        height: 240px;
+        background-image: url('../../assets/images/light_blue_coupon@2x.png');
+        background-size: contain;
       }
     }
   }
+  .list {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    .item {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 20px;
+      position: relative;
+    }
+    .left {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding-right: 70px;
+      width: 218px;
+      height: 192px;
+      background-color: #e02e26;
+      border-radius: 10px;
+      .logo {
+        margin-bottom: 5px;
+        width: 80px;
+        height: 80px;
+      }
+      .text {
+        color: #fff;
+        font-size: 36px;
+      }
+    }
+    .right {
+      position: absolute;
+      z-index: 10;
+      top: 15px;
+      right: 0;
+      padding-left: 66px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      width: 80%;
+      height: 162px;
+      background-image: url('../../assets/images/rectangle.png');
+      background-size: cover;
+      .title {
+        margin-bottom: 10px;
+        font-size: 36px;
+        font-weight: normal;
+        color: #575552;
+      }
+      .subtitle {
+        font-size: 32px;
+        font-weight: normal;
+        color: #fd0c3c;
+      }
+      .btn {
+        position: absolute;
+        right: 14px;
+        background: linear-gradient(180deg, #f75050 0%, #cf0606 100%);
+        border-radius: 16px;
+        color: #fff;
+        padding: 10px 20px;
+      }
+    }
+  }
+}
 </style>
-
-
-
