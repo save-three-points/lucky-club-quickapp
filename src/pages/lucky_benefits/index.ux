@@ -1,0 +1,28 @@
+<import name="top-arc" src="../../components/TopArc"></import>
+<import name="search-input" src="../../components/SearchInput"></import>
+<import name="coupon-card" src="../../components/CouponCard"></import>
+
+<template>
+  <div class="lucky-benefits">
+    <top-arc>
+      <search-input />
+    </top-arc>
+    <div class="list">
+      <coupon-card />
+    </div>
+    <!-- <text>lucky</text> -->
+  </div>
+</template>
+
+<style lang="scss" scoped>
+.lucky-benefits {
+  display: flex;
+  flex-direction: column;
+  .list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 28px;
+  }
+}
+</style>

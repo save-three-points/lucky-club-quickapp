@@ -29,23 +29,16 @@
     "logLevel": "debug"
   },
   "router": {
-    "entry": "pages/daily_receive",
+    "entry": "pages/lucky_benefits",
     "pages": {
       "pages/daily_receive": {
         "component": "index"
+      },
+      "pages/lucky_benefits": {
+        "component": "index"
       }
     },
-    "widgets": {
-      "CardDemo": {
-        "name": "CardDemo",
-        "description": "快应用卡片展示",
-        "component": "index",
-        "path": "/CardDemo",
-        "minPlatformVersion": 1032,
-        "targetManufactorys": ["vivo"],
-        "features": []
-      }
-    }
+    "widgets": {}
   },
   "display": {
     "titleBar": false,

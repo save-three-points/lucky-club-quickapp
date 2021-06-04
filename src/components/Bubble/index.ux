@@ -1,0 +1,35 @@
+<template>
+  <div class="bubble">
+    <text class="title">{{ title }}</text>
+  </div>
+</template>
+
+<script>
+export default {
+  props: {
+    title: {
+      default: '标题标题标题'
+    }
+  }
+}
+</script>
+
+<style lang="scss" scoped>
+@import '../../styles/mixins/text.scss';
+
+.bubble {
+  width: 280px;
+  height: 56px;
+  border-radius: 16px;
+  background-color: rgb(79, 77, 77, 0.8);
+  .title {
+    width: 180px;
+    margin: auto;
+    font-size: 24px;
+    color: #fcf4f4;
+    /* overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap; */
+  }
+}
+</style>
