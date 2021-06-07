@@ -29,7 +29,7 @@
     "logLevel": "debug"
   },
   "router": {
-    "entry": "pages/lucky_benefits",
+    "entry": "pages/daily_receive",
     "pages": {
       "pages/daily_receive": {
         "component": "index"
@@ -43,6 +43,7 @@
   "display": {
     "titleBar": false,
     "menu": true,
-    "statusBarImmersive": true
+    "statusBarImmersive": true,
+    "themeMode": 0
   }
 }

@@ -19,7 +19,7 @@
   padding: 14px 21px;
   width: 642px;
   height: 80px;
-  border: solid 1px #f84732;
+  border: 1px solid  #f84732;
   background-color: #fff;
   .prefix {
     margin-right: 26px;

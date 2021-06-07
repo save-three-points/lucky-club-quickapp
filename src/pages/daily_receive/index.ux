@@ -6,26 +6,40 @@
     </div>
     <div class="content">
       <div class="card">
-        <div class="coupon">
-          <div class="pink">
-            <div class="item">
-              <text class="name">外卖红包</text>
-              <div>
-                <text class="highlight">8-30</text>
-                <text class="suffix">元</text>
-              </div>
-              <text class="desc">每天都能领</text>
+        <div class="coupon" >
+          <div class="item" for="item in couponCards" @click="onCouponClick(item.url)">
+            <text class="name" style="color:{{item.titleColor}}">{{item.title}}</text>
+            <div>
+              <text class="highlight" if="item.price.min">{{item.price.min}}-{{item.price.max}}</text>
+              <text class="highlight" else>{{item.price.max}}</text>
+              <text class="suffix">元</text>
             </div>
+            <text class="desc">每天都能领</text>
             <div class="circle">
-              <text>待领取</text>
-              <text>+1</text>
+              <text class="title">待领取</text>
+              <text class="title">+{{item.toReceived}}</text>
             </div>
           </div>
-          <div class="blue-item"></div>
+        </div>
+        <div class="steps">
+          <div class="item">
+            <image src="../../assets/images/money@2x.png" class="thumb"></image>
+            <text class="text">先领红包</text>
+          </div>
+          <image src="../../assets/images/arrow_orange@2x.png" class="arrow"></image>
+          <div class="item">
+            <image src="../../assets/images/order@2x.png" class="thumb"></image>
+            <text class="text">再下单</text>
+          </div>
+          <image src="../../assets/images/arrow_red@2x.png" class="arrow"></image>
+          <div class="item">
+            <image src="../../assets/images/deduction@2x.png" class="thumb"></image>
+            <text class="text">抵扣</text>
+          </div>
         </div>
       </div>
       <div class="list">
-        <div class="item" for="item in couponList">
+        <div class="item" for="item in couponList" @click="onCouponClick(item.url)">
           <div class="left" style="background-color: {{item.color}}">
             <image
               src="../../assets/images/{{item.logo}}_logo.png"
@@ -47,18 +61,22 @@
 </template>
 
 <script>
-import webview from '@system.webview'
+import router from '@system.router';
+import { TAOBAO_COUPON_URL, TIANMAO_COUPON_URL, PINGDUODUO_COUPON_URL, MEITUAN_COUPON_URL, ELEME__COUPON_URL } from '../../constants';
+import { couponCards } from './config';
 
 export default {
   protected: {
     redirect: '',
+    couponCards,
     couponList: [
       {
         name: '淘宝',
         logo: 'taobao',
         color: '#FC8848',
         title: ' 每日10:00开售',
-        subtitle: '全场商品1元购'
+        subtitle: '全场商品1元购',
+        url: TAOBAO_COUPON_URL,
       },
       {
         name: '天猫',
@@ -66,28 +84,32 @@ export default {
         color: '#E80000',
         style: 'width: 100px;height: 46px',
         title: ' 满199元减100',
-        subtitle: '天猫超市5折专场'
+        subtitle: '天猫超市5折专场',
+        url: TIANMAO_COUPON_URL,
       },
       {
         name: '拼多多',
         logo: 'pdd',
         color: '#E02E26',
         title: ' 每日更新货品',
-        subtitle: '全场商品1.9元包邮'
+        subtitle: '全场商品1.9元包邮',
+        url: PINGDUODUO_COUPON_URL,
       },
       {
         name: '美团',
         logo: 'meituan',
         color: '#FFBB03',
         title: '最高可领20元',
-        subtitle: '0.01元果切限购一份'
+        subtitle: '0.01元果切限购一份',
+        url: MEITUAN_COUPON_URL,
       },
       {
         name: '饿了么',
         logo: 'eleme',
         color: '#2087F2',
         title: '抽果蔬商超神券',
-        subtitle: '满20减10起'
+        subtitle: '满20减10起',
+        url: ELEME__COUPON_URL,
       }
     ]
   },
@@ -96,7 +118,10 @@ export default {
     //     url: this.redirect,
     //     showloadingdialog: true,
     //   })
-  }
+  },
+  onCouponClick(uri) {
+    router.push({ uri })
+  },
 }
 </script>
 
@@ -118,78 +143,96 @@ export default {
     margin-top: -80px;
   }
   .card {
-    height: 666px;
     width: 100%;
     position: relative;
     background-image: url('../../assets/images/card@2x.png');
     background-size: cover;
     margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
     .coupon {
-      position: absolute;
-      top: 146px;
-      left: 50%;
-      transform: translateX(-50%);
+      margin-top: 150px;
       display: flex;
       justify-content: space-around;
       width: 100%;
-      .pink {
+      .item {
         display: flex;
         flex-direction: column;
-        position: relative;
-        .item {
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          width: 200px;
-          height: 240px;
-          background-image: url('../../assets/images/light_pink_coupon@2x.png');
-          background-size: contain;
-          overflow: initial;
-          .name {
-            margin-top: 10px;
-            font-size: 28px;
-            font-weight: normal;
-            color: #00b6fe;
-          }
-          .highlight {
-            margin-top: 20px;
-            font-size: 48px;
-            font-weight: normal;
-            color: #f20508;
-          }
-          .suffix {
-            margin-top: 20px;
-            font-size: 32px;
-            font-weight: normal;
-            color: #5d5b58;
-          }
-          .desc {
-            font-size: 24px;
-            font-weight: normal;
-            color: #dd584f;
-          }
+        align-items: center;
+        width: 200px;
+        height: 320px;
+        background-image: url('../../assets/images/light_pink_coupon@2x.png');
+        background-size: contain;
+        background-repeat: no-repeat;
+        .name {
+          margin-top: 10px;
+          font-size: 28px;
+          font-weight: normal;
+          /* color: #00b6fe; */
         }
-        .circle {
-          position: absolute;
-          bottom: -60px;
-          width: 112px;
-          height: 112px;
-          background: linear-gradient(
-            90deg,
-            #fa307a 0%,
-            #fd0734 50%,
-            #fd7e41 100%
-          );
-          z-index: 10;
-          color: #fff;
-          border-radius: 50%;
+        .highlight {
+          margin-top: 20px;
+          font-size: 48px;
+          font-weight: normal;
+          color: #f20508;
+        }
+        .suffix {
+          margin-left: 10px;
+          margin-top: 20px;
+          font-size: 32px;
+          font-weight: normal;
+          color: #5d5b58;
+        }
+        .desc {
+          font-size: 24px;
+          font-weight: normal;
+          color: #dd584f;
         }
       }
-      .blue-item {
-        width: 184px;
-        height: 240px;
-        background-image: url('../../assets/images/light_blue_coupon@2x.png');
-        background-size: contain;
+      .circle {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin-top: 20px;
+        width: 112px;
+        height: 112px;
+        border-radius: 50%;
+        background: linear-gradient(90deg, 
+            #fa307a 0%, 
+            #fd0734 50%, 
+            #fd7e41 100%);
+        .title {
+          color: #fff;
+          font-size: 28px;
+        }
+      }
+    }
+    .steps {
+      margin: 20px;
+      padding: 28px 34px;
+      background-color: #fff;
+      display: flex;
+      justify-content: space-between;
+      position: relative;
+      .item {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        .thumb {
+          width: 80px;
+          height: 80px;
+        }
+        .text {
+          margin-top: 8px;
+          font-size: 24px;
+          color: #575552;
+        }
+      }
+      .arrow {
+        margin-top: 30px;
+        width: 80px;
       }
     }
   }
@@ -243,7 +286,7 @@ export default {
         color: #575552;
       }
       .subtitle {
-        font-size: 32px;
+        font-size: 28px;
         font-weight: normal;
         color: #fd0c3c;
       }
@@ -253,7 +296,7 @@ export default {
         background: linear-gradient(180deg, #f75050 0%, #cf0606 100%);
         border-radius: 16px;
         color: #fff;
-        padding: 10px 20px;
+        padding: 10px 16px;
       }
     }
   }
