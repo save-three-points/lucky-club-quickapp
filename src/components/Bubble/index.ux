@@ -27,9 +27,6 @@ export default {
     margin: auto;
     font-size: 24px;
     color: #fcf4f4;
-    /* overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap; */
   }
 }
 </style>

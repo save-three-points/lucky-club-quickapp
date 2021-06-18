@@ -1,4 +1,4 @@
-import { ELEME_RED_ENVELOPE_URL, MEITUAN_COUPON_URL } from "../../constants";
+import { ELEME_RED_ENVELOPE_URL, EMITUAN_RED_ENVELOPE_URL } from "../../constants";
 
 export const couponCards = [
     {
@@ -22,7 +22,7 @@ export const couponCards = [
             max: 38,
         },
         toReceived: 2,
-        url: MEITUAN_COUPON_URL,
+        url: EMITUAN_RED_ENVELOPE_URL,
         // btnBgColor: `linear-gradient(90deg, 
         //     #e43939 0%, 
         //     #d42020 46%, 

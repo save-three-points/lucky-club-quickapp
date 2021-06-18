@@ -1,12 +1,12 @@
 <template>
   <div class="search-input">
     <image src="../../assets/images/search@2x.png" class="prefix"></image>
-    <input
+    <!-- <input
       type="text"
       placeholder="搜索惊喜福利"
       class="input"
       placeholder-color="#efe6e6"
-    />
+    /> -->
   </div>
 </template>
 

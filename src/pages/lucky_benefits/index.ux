@@ -5,10 +5,10 @@
 <template>
   <div class="lucky-benefits">
     <top-arc>
-      <search-input />
+      <search-input></search-input>
     </top-arc>
     <div class="list">
-      <coupon-card />
+      <coupon-card></coupon-card>
     </div>
     <!-- <text>lucky</text> -->
   </div>

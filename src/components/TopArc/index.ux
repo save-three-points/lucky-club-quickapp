@@ -1,6 +1,6 @@
 <template>
   <div class="top-arc">
-    <slot />
+    <slot name="default"></slot>
   </div>
 </template>
 
