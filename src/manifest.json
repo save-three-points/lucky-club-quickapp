@@ -1,8 +1,8 @@
 {
-  "package": "com.jweboy.luckyClub",
+  "package": "com.luckyClub.coupon",
   "name": "幸运福利社",
-  "versionName": "0.2.0",
-  "versionCode": 2,
+  "versionName": "1.0",
+  "versionCode": 1,
   "minPlatformVersion": 1070,
   "icon": "/assets/images/logo.png",
   "features": [
@@ -42,9 +42,20 @@
   },
   "display": {
     "titleBar": false,
-    "menu": true,
     "statusBarImmersive": true,
     "themeMode": 0,
-    "pages: ""
+    "menuBarData": {
+      "menuBar": true,
+      "shareTitle": "幸运福利社",
+      "shareDescription": "每日66元外卖红包，万件1元抢购等你来~",
+      "shareIcon": "/assets/images/logo.png"
+    },
+    "pages": {
+      "daily_receive": {
+        "menuBarData": {
+          "menuBar": true
+         }
+      }
+    }
   }
 }
