@@ -1,8 +1,8 @@
 {
   "package": "com.luckyClub.coupon",
   "name": "幸运福利社",
-  "versionName": "1.0",
-  "versionCode": 1,
+  "versionName": "2.0",
+  "versionCode": 2,
   "minPlatformVersion": 1070,
   "icon": "/assets/images/logo.png",
   "features": [
@@ -54,7 +54,7 @@
       "daily_receive": {
         "menuBarData": {
           "menuBar": true
-         }
+        }
       }
     }
   }
